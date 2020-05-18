@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 
-class Login extends Component {
+var cara=0, escudo=0, probCara=0, probEscudo=0
+var uno=0, dos=0, tres=0, cuatro=0, cinco=0, seis=0
+var probUno=0, probDos=0, probTres=0, probCuatro=0, probCinco=0, probSeis=0
+var resultados = []
+
+class App extends Component {
     constructor() {
         super()
         this.state = {
             nroTirosMoneda: 0,
             nroTirosDado: 0,
-            cara: 0, escudo: 0,
-            probCara: '0%', probEscudo:'0%',
             uno: 0, dos:0, tres:0, cuatro:0, cinco:0, seis:0,
             probUno: '0%', probDos:'0%', probTres:'0%', probCuatro:'0%', probCinco:'0%', probSeis:'0%',
             showMoneda:false,
@@ -22,6 +25,11 @@ class Login extends Component {
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
         this.setState({showMoneda:false, showDado:false})
+        //borra datos anteriores
+        cara=0; escudo=0; probCara=0; probEscudo=0;
+        uno=0; dos=0; tres=0; cuatro=0; cinco=0; seis=0;
+        probUno=0; probDos=0; probTres=0; probCuatro=0; probCinco=0; probSeis=0; 
+        resultados=[]
     }
 
     aleatorio(minimo, maximo){
@@ -29,16 +37,62 @@ class Login extends Component {
     }
 
     experimentoMoneda(e) {
-        e.preventDefault()
-        this.setState({showMoneda:true})
-        console.log(this.aleatorio(1,2))
+      e.preventDefault()
+      //borra datos anteriores
+      cara=0; escudo=0; probCara=0; probEscudo=0; 
+      resultados=[]
 
+      this.setState({showMoneda:true})
+      for(var i=0 ; i<this.state.nroTirosMoneda ; i++){
+        var res = this.aleatorio(1,2)
+        if(res === 1){
+          cara++
+          resultados.push("C")
+        }else{
+          escudo++
+          resultados.push("E")
+        }
+      }
+      probCara=(cara/this.state.nroTirosMoneda)*100
+      probEscudo=(escudo/this.state.nroTirosMoneda)*100
     }
 
     experimentoDado(e) {
       e.preventDefault()
+      //borra datos anteriores
+      uno=0; dos=0; tres=0; cuatro=0; cinco=0; seis=0;
+      probUno=0; probDos=0; probTres=0; probCuatro=0; probCinco=0; probSeis=0;
+      resultados=[]
+
       this.setState({showDado:true})
-      console.log(this.aleatorio(1,5))
+      for(var i=0 ; i<this.state.nroTirosDado ; i++){
+        var res = this.aleatorio(1,6)
+        if(res === 1){
+          uno++; resultados.push(res)
+        }
+        if(res === 2){
+          dos++; resultados.push(res)
+        }
+        if(res === 3){
+          tres++; resultados.push(res)
+        }
+        if(res === 4){
+          cuatro++; resultados.push(res)
+        }
+        if(res === 5){
+          cinco++; resultados.push(res)
+        }
+        if(res === 6){
+          seis++; resultados.push(res)
+        }
+      }
+      probUno=(uno/this.state.nroTirosDado)*100
+      probDos=(dos/this.state.nroTirosDado)*100
+      probTres=(tres/this.state.nroTirosDado)*100
+      probCuatro=(cuatro/this.state.nroTirosDado)*100
+      probCinco=(cinco/this.state.nroTirosDado)*100
+      probSeis=(seis/this.state.nroTirosDado)*100
+      
   }
 
     render() {
@@ -67,22 +121,24 @@ class Login extends Component {
                     <div>
                       <div className="row mt-4">
                         <div className="col-md-6">
-                          Numero de caras : {this.state.cara}
+                          Numero de caras : {cara}
                         </div>
                         <div className="col-md-6">
-                          Probabilidad : {this.state.probCara}
+                          Probabilidad caras: {probCara+"%"}
                         </div>
                         <div className="col-md-6">
-                          Numero de escudos : {this.state.escudo}
+                          Numero de escudos : {escudo}
                         </div>
                         <div className="col-md-6">
-                          Probabilidad : {this.state.probEscudo}
+                          Probabilidad escudos: {probEscudo+"%"}
                         </div>
                       </div>
-                      <div className="container mt-4">
+                      <div className="container my-4">
                         <div className="row">
-                          {/*mapeo aqui */}
-                          <div className="col-md-1 border">1</div>
+                          {resultados.map(res => (
+                            <div className="col-md-1 border">{res}</div>
+                           ))
+                          }
                         </div>
                       </div>
                     </div>
@@ -109,46 +165,48 @@ class Login extends Component {
                     <div>
                       <div className="row mt-4">
                         <div className="col-md-6">
-                          Cantidad de uno : {this.state.uno}
+                          Cantidad de uno : {uno}
                         </div>
                         <div className="col-md-6">
-                          Probabilidad : {this.state.probUno}
+                          Probabilidad : {probUno+"%"}
                         </div>
                         <div className="col-md-6">
-                          Cantidad de dos : {this.state.dos}
+                          Cantidad de dos : {dos}
                         </div>
                         <div className="col-md-6">
-                          Probabilidad : {this.state.probDos}
+                          Probabilidad : {probDos+"%"}
                         </div>
                         <div className="col-md-6">
-                          Cantidad de tres : {this.state.tres}
+                          Cantidad de tres : {tres}
                         </div>
                         <div className="col-md-6">
-                          Probabilidad : {this.state.probTres}
+                          Probabilidad : {probTres+"%"}
                         </div>
                         <div className="col-md-6">
-                          Cantidad de cuatro : {this.state.cuatro}
+                          Cantidad de cuatro : {cuatro}
                         </div>
                         <div className="col-md-6">
-                          Probabilidad : {this.state.probCuatro}
+                          Probabilidad : {probCuatro+"%"}
                         </div>
                         <div className="col-md-6">
-                          Cantidad de cinco : {this.state.cinco}
+                          Cantidad de cinco : {cinco}
                         </div>
                         <div className="col-md-6">
-                          Probabilidad : {this.state.probCinco}
+                          Probabilidad : {probCinco+"%"}
                         </div>
                         <div className="col-md-6">
-                          Cantidad de seis : {this.state.seis}
+                          Cantidad de seis : {seis}
                         </div>
                         <div className="col-md-6">
-                          Probabilidad : {this.state.probSeis}
+                          Probabilidad : {probSeis+"%"}
                         </div>
                       </div>
-                      <div className="container mt-4">
+                      <div className="container my-4">
                         <div className="row">
-                          {/*mapeo aqui */}
-                          <div className="col-md-1 border">1</div>
+                          {resultados.map(res => (
+                            <div className="col-md-1 border">{res}</div>
+                           ))
+                          }
                         </div>
                       </div>
                     </div>
@@ -162,5 +220,5 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default App
 
