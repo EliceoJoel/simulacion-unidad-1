@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/simulacion-unidad-1/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/simulacion-unidad-1/static/js/main.5f0ec911.chunk.js",
+    "main.js.map": "/simulacion-unidad-1/static/js/main.5f0ec911.chunk.js.map",
+    "runtime-main.js": "/simulacion-unidad-1/static/js/runtime-main.e623924c.js",
+    "runtime-main.js.map": "/simulacion-unidad-1/static/js/runtime-main.e623924c.js.map",
+    "static/js/2.9298e8f5.chunk.js": "/simulacion-unidad-1/static/js/2.9298e8f5.chunk.js",
+    "static/js/2.9298e8f5.chunk.js.map": "/simulacion-unidad-1/static/js/2.9298e8f5.chunk.js.map",
+    "index.html": "/simulacion-unidad-1/index.html",
+    "precache-manifest.a18a875a8baaf18662f0ac5beb8f0438.js": "/simulacion-unidad-1/precache-manifest.a18a875a8baaf18662f0ac5beb8f0438.js",
+    "service-worker.js": "/simulacion-unidad-1/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/simulacion-unidad-1/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.9298e8f5.chunk.js.LICENSE.txt": "/simulacion-unidad-1/static/js/2.9298e8f5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e623924c.js",
+    "static/js/2.9298e8f5.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.5f0ec911.chunk.js"
+  ]
+}
